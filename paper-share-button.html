@@ -10,8 +10,7 @@
 
     <paper-share-button facebook twitter url="https://www.polymer-project.org"></paper-share-button>
 
-### Compatible w/
-+ E-mail
+### Social Media Supported:
 + Facebook
 + Google Plus
 + Twitter
@@ -19,6 +18,17 @@
 + VK
 + Blogger
 + Tumblr
++ E-mail
+
+### Popup
+`<paper-share-button>` supports popup sharing. Just add the attribute 'popup' to the element.
+
+Compatibility list:
++ Facebook
++ Google Plus
++ Twitter
+
+non-compatible social media will open on a new tab.
 
 ### Styling
 
@@ -72,44 +82,30 @@ Custom property | Description | Default
         width: var(--paper-share-button-icon-width, 40px);
       }
     </style>
-    <paper-menu-button>
+    <paper-menu-button id="shareMenu">
       <paper-icon-button icon="custom:share" class="dropdown-trigger"></paper-icon-button>
       <paper-material class="dropdown-content">
         <div class="social-list">
           <div>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=[[url]]" target="_blank" tabindex="-1">
-              <paper-icon-button hidden$="[[!facebook]]" style="color:#3B5998" class="social-icon" icon="brand:facebook"></paper-icon-button>
-            </a>
+            <paper-icon-button popable href="https://www.facebook.com/sharer/sharer.php?u=[[url]]" hidden$="[[!facebook]]" style="color:#3B5998" class="social-icon" cake="1w2" icon="brand:facebook" on-tap="_share"></paper-icon-button>
           </div>
           <div>
-            <a href="https://plus.google.com/share?url=[[url]]" target="_blank" tabindex="-1">
-              <paper-icon-button hidden$="[[!google]]" style="color:#DC4E41" class="social-icon" icon="brand:google"></paper-icon-button>
-            </a>
+            <paper-icon-button href="https://plus.google.com/share?url=[[url]]" hidden$="[[!google]]" style="color:#DC4E41" class="social-icon" icon="brand:google" on-tap="_share"></paper-icon-button>
           </div>
           <div>
-            <a href="http://twitter.com/intent/tweet?url=[[url]]&text=[[sharingText]]" target="_blank" tabindex="-1">
-            <paper-icon-button hidden$="[[!twitter]]" style="color:#1DA1F2" class="social-icon" icon="brand:twitter"></paper-icon-button>
-            </a>
+            <paper-icon-button href="http://twitter.com/intent/tweet?url=[[url]]&text=[[sharingText]]" hidden$="[[!twitter]]" style="color:#1DA1F2" class="social-icon" icon="brand:twitter" on-tap="_share"></paper-icon-button>
           </div>
           <div>
-            <a href="http://reddit.com/submit?url=[[url]]&title=[[sharingText]]" target="_blank" tabindex="-1">
-              <paper-icon-button hidden$="[[!reddit]]" style="color:#FF4500" class="social-icon" icon="brand:reddit"></paper-icon-button>
-            </a>
+            <paper-icon-button href="http://reddit.com/submit?url=[[url]]&title=[[sharingText]]" hidden$="[[!reddit]]" style="color:#FF4500" class="social-icon" icon="brand:reddit" on-tap="_share"></paper-icon-button>
           </div>
           <div>
-            <a href="http://vkontakte.ru/share.php?url=[[url]]" target="_blank" tabindex="-1">
-              <paper-icon-button hidden$="[[!vk]]" style="color:#6383A8" class="social-icon" icon="brand:vk"></paper-icon-button>
-            </a>
+            <paper-icon-button href="http://vkontakte.ru/share.php?url=[[url]]" hidden$="[[!vk]]" style="color:#6383A8" class="social-icon" icon="brand:vk" on-tap="_share"></paper-icon-button>
           </div>
           <div>
-            <a href="http://www.blogger.com/blog-this.g?n=[[sharingText]]&b=[[sharingText]]%20[[url]]" target="_blank" tabindex="-1">
-              <paper-icon-button hidden$="[[!blogger]]" style="color:#F38936" class="social-icon" icon="brand:blogger"></paper-icon-button>
-            </a>
+            <paper-icon-button href="http://www.blogger.com/blog-this.g?n=[[sharingText]]&b=[[sharingText]]%20[[url]]" hidden$="[[!blogger]]" style="color:#F38936" class="social-icon" icon="brand:blogger" on-tap="_share"></paper-icon-button>
           </div>
           <div>
-            <a href="http://www.tumblr.com/share/link?url=[[url]]" target="_blank" tabindex="-1">
-              <paper-icon-button hidden$="[[!tumblr]]" style="color:#36465D" class="social-icon" icon="brand:tumblr"></paper-icon-button>
-            </a>
+            <paper-icon-button href="http://www.tumblr.com/share/link?url=[[url]]" hidden$="[[!tumblr]]" style="color:#36465D" class="social-icon" icon="brand:tumblr" on-tap="_share"></paper-icon-button>
           </div>
           <div>
             <a href="mailto:?body=[[url]]&subject=[[sharingText]]" target="_blank" tabindex="-1">
@@ -138,6 +134,11 @@ Custom property | Description | Default
                 },
                 /** Set to true to make all the logo black & white */
                 monochrome: {
+                    type: Boolean,
+                    value: false
+                },
+                /** Enable Popup sharing. Only working with compatible website (Facebook, Google Plus, Twitter)*/
+                popup: {
                     type: Boolean,
                     value: false
                 },
@@ -182,7 +183,37 @@ Custom property | Description | Default
                     value: false
                 }
             },
-
+            _share: function(event) {
+              var element = Polymer.dom(event).localTarget;
+                if (this.url) {
+                    if (this.popup) {
+                        switch (element.icon) {
+                            case 'brand:facebook':
+                                this._openPopup(element.href, 'Sharing', 600, 375);
+                                break;
+                            case 'brand:google':
+                                this._openPopup(element.href, 'Sharing', 400, 445);
+                                break;
+                            case 'brand:twitter':
+                                this._openPopup(element.href, 'Sharing', 500, 230);
+                                break;
+                            default:
+                                window.open(element.href, 'Sharing');
+                        }
+                    } else {
+                        window.open(element.href, 'Sharing');
+                    }
+                } else {
+                    console.error("Impossible to share, no url set");
+                }
+                this.$.shareMenu.close();
+            },
+            _openPopup: function(url, title, w, h) {
+                //Center and open the popup.
+                var y = window.top.outerHeight / 2 + window.top.screenY - (h / 2)
+                var x = window.top.outerWidth / 2 + window.top.screenX - (w / 2)
+                window.open(url, title, 'width=' + w + ', height=' + h + ', top=' + y + ', left=' + x);
+            }
         });
     </script>
 </dom-module>

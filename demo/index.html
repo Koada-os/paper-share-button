@@ -17,11 +17,22 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic paper-share-button demo</h3>
+      <h3>paper-share-button can share url through many social media</h3>
       <demo-snippet>
         <template>
-          <paper-share-button url="https://example.org" facebook google twitter reddit blogger vk tumblr email></paper-share-button>
-          <paper-share-button monochrome url="https://example.org" facebook google twitter></paper-share-button>
+          <paper-share-button url="https://www.webcomponents.org/" facebook google twitter reddit blogger vk tumblr email></paper-share-button>
+        </template>
+      </demo-snippet>
+      <h3>paper-share-button can be monochrome</h3>
+      <demo-snippet>
+        <template>
+          <paper-share-button monochrome url="https://www.webcomponents.org/" facebook google twitter reddit blogger vk tumblr email></paper-share-button>
+        </template>
+      </demo-snippet>
+      <h3>paper-share-button can open popup w/ compatible social media</h3>
+      <demo-snippet>
+        <template>
+          <paper-share-button popup url="https://www.webcomponents.org/" facebook google twitter></paper-share-button>
         </template>
       </demo-snippet>
     </div>
