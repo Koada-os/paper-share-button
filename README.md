@@ -6,8 +6,7 @@ Material design: URL sharing system
 
 `<paper-share-button>` is a light Material Design URL sharing system.
 
-### Compatible w/
-+ E-mail
+### Social Media Supported:
 + Facebook
 + Google Plus
 + Twitter
@@ -15,6 +14,17 @@ Material design: URL sharing system
 + VK
 + Blogger
 + Tumblr
++ E-mail
+
+### Popup
+`<paper-share-button>` supports popup sharing. Just add the attribute 'popup' to the element.
+
+Compatibility list:
++ Facebook
++ Google Plus
++ Twitter
+
+non-compatible social media will open on a new tab.
 
 Example:
 
