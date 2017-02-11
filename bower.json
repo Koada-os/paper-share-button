@@ -12,7 +12,9 @@
   "main": "paper-share-button.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
-    "paper-menu-button": "^1.1.23",
+    "paper-menu-button": "^1.5.2",
+    "paper-icon-button": "^1.1.4",
+    "paper-material": "^1.0.6"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",

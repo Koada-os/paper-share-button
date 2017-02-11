@@ -1,38 +1,33 @@
-# \<paper-share-button\>
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/MacTheZazou/paper-share-button)
 
-A Material Design sharing button (Polymer 1.x)
+##&lt;paper-share-button&gt;
 
-## Install the Polymer-CLI
+Material design: URL sharing system
 
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your application locally.
+`<paper-share-button>` is a light Material Design URL sharing system.
 
-## Viewing Your Application
+### Compatible w/
++ E-mail
++ Facebook
++ Google Plus
++ Twitter
++ Reddit
++ VK
++ Blogger
++ Tumblr
 
+Example:
+
+<!--
 ```
-$ polymer serve
+<custom-element-demo>
+  <template>
+    <link rel="import" href="paper-share-button.html">
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
 ```
-
-## Building Your Application
-
+-->
+```html
+<paper-share-button facebook google twitter email url="https://example.org"></paper-share-button>
 ```
-$ polymer build
-```
-
-This will create a `build/` folder with `bundled/` and `unbundled/` sub-folders
-containing a bundled (Vulcanized) and unbundled builds, both run through HTML,
-CSS, and JS optimizers.
-
-You can serve the built versions by giving `polymer serve` a folder to serve
-from:
-
-```
-$ polymer serve build/bundled
-```
-
-## Running Tests
-
-```
-$ polymer test
-```
-
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
