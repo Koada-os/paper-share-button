@@ -25,6 +25,7 @@ Compatibility list:
 + Twitter
 
 non-compatible social media will open on a new tab.
+`Note: Popup demo won't work in frame`
 
 Example:
 
