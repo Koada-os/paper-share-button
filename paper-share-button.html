@@ -38,11 +38,12 @@ for styling:
 
 Custom property | Description | Default
 ----------------|-------------|----------
-`--paper-share-button-icon-height` | Height of social media icons | 40px
-`--paper-share-button-icon-width` | Width of social media icons | 40px
-`--paper-share-button-share-icon-height` | Height of social share icon | 40px
-`--paper-share-button-share-icon-width` | Width of social share icon | 40px
-`--paper-share-button-monochrome-color` | The monochrome color | #000000
+`--paper-share-button-icon-color` | The share icon color | black
+`--paper-share-button-icon-height` | Height of share icon | 40px
+`--paper-share-button-icon-width` | Width of share icon | 40px
+`--paper-share-button-brand-icon-monochrome-color` | The monochrome color | black
+`--paper-share-button-brand-icon-height` | Height of social media icons | 40px
+`--paper-share-button-brand-icon-width` | Width of social media icons | 40px
 
 @demo demo/index.html
 -->
@@ -71,7 +72,7 @@ Custom property | Description | Default
         display: inline-block;
       }
       :host([monochrome]) .social-icon {
-        color: var(--paper-share-button-monochrome-color, #000000) !important;
+        color: var(--paper-share-button-brand-icon-monochrome-color, black) !important;
       }
       #container:hover > #cube { background-color: yellow; }
       .social-list {
@@ -80,17 +81,18 @@ Custom property | Description | Default
       paper-menu-button {
         padding: 0px;
       }
-      .social-icon {
+      paper-icon-button {
         height: var(--paper-share-button-icon-height, 40px);
         width: var(--paper-share-button-icon-width, 40px);
+        color: var(--paper-share-button-icon-color, black);
       }
-      .dropdown-trigger {
-        height: var(--paper-share-button-share-icon-height, 40px);
-        width: var(--paper-share-button-share-icon-width, 40px);
+      .social-icon {
+        height: var(--paper-share-button-brand-icon-height, 40px);
+        width: var(--paper-share-button-brand-icon-width, 40px);
       }
     </style>
     <paper-menu-button id="shareMenu">
-      <paper-icon-button icon="custom:share" class="dropdown-trigger"></paper-icon-button>
+      <paper-icon-button icon="[[buttonIcon]]" class="dropdown-trigger"></paper-icon-button>
       <paper-material class="dropdown-content">
         <div class="social-list">
           <div>
@@ -133,6 +135,11 @@ Custom property | Description | Default
                 /** URL to share. Don't forget to use http:// or https:// at the beginning of the url! */
                 url: {
                     type: String
+                },
+                /** The icon for the button (share icon by default)*/
+                buttonIcon: {
+                    type: String,
+                    value: 'custom:share'
                 },
                 /** text to share with the URL. (Compatible w/ Twitter / Reddit / Blogger) */
                 sharingText: {
