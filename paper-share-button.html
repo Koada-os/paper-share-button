@@ -94,28 +94,28 @@ Custom property | Description | Default
       <paper-material class="dropdown-content">
         <div class="social-list">
           <div>
-            <paper-icon-button popable href="https://www.facebook.com/sharer/sharer.php?u=[[url]]" hidden$="[[!facebook]]" style="color:#3B5998" class="social-icon" cake="1w2" icon="brand:facebook" on-tap="_share"></paper-icon-button>
+            <paper-icon-button href$="https://www.facebook.com/sharer/sharer.php?u=[[url]]" hidden$="[[!facebook]]" style="color:#3B5998" class="social-icon" cake="1w2" icon="brand:facebook" on-tap="_share"></paper-icon-button>
           </div>
           <div>
-            <paper-icon-button href="https://plus.google.com/share?url=[[url]]" hidden$="[[!google]]" style="color:#DC4E41" class="social-icon" icon="brand:google" on-tap="_share"></paper-icon-button>
+            <paper-icon-button href$="https://plus.google.com/share?url=[[url]]" hidden$="[[!google]]" style="color:#DC4E41" class="social-icon" icon="brand:google" on-tap="_share"></paper-icon-button>
           </div>
           <div>
-            <paper-icon-button href="http://twitter.com/intent/tweet?url=[[url]]&text=[[sharingText]]" hidden$="[[!twitter]]" style="color:#1DA1F2" class="social-icon" icon="brand:twitter" on-tap="_share"></paper-icon-button>
+            <paper-icon-button href$="http://twitter.com/intent/tweet?url=[[url]]&text=[[sharingText]]" hidden$="[[!twitter]]" style="color:#1DA1F2" class="social-icon" icon="brand:twitter" on-tap="_share"></paper-icon-button>
           </div>
           <div>
-            <paper-icon-button href="http://reddit.com/submit?url=[[url]]&title=[[sharingText]]" hidden$="[[!reddit]]" style="color:#FF4500" class="social-icon" icon="brand:reddit" on-tap="_share"></paper-icon-button>
+            <paper-icon-button href$="http://reddit.com/submit?url=[[url]]&title=[[sharingText]]" hidden$="[[!reddit]]" style="color:#FF4500" class="social-icon" icon="brand:reddit" on-tap="_share"></paper-icon-button>
           </div>
           <div>
-            <paper-icon-button href="http://vkontakte.ru/share.php?url=[[url]]" hidden$="[[!vk]]" style="color:#6383A8" class="social-icon" icon="brand:vk" on-tap="_share"></paper-icon-button>
+            <paper-icon-button href$="http://vkontakte.ru/share.php?url=[[url]]" hidden$="[[!vk]]" style="color:#6383A8" class="social-icon" icon="brand:vk" on-tap="_share"></paper-icon-button>
           </div>
           <div>
-            <paper-icon-button href="http://www.blogger.com/blog-this.g?n=[[sharingText]]&b=[[sharingText]]%20[[url]]" hidden$="[[!blogger]]" style="color:#F38936" class="social-icon" icon="brand:blogger" on-tap="_share"></paper-icon-button>
+            <paper-icon-button href$="http://www.blogger.com/blog-this.g?n=[[sharingText]]&b=[[sharingText]]%20[[url]]" hidden$="[[!blogger]]" style="color:#F38936" class="social-icon" icon="brand:blogger" on-tap="_share"></paper-icon-button>
           </div>
           <div>
-            <paper-icon-button href="http://www.tumblr.com/share/link?url=[[url]]" hidden$="[[!tumblr]]" style="color:#36465D" class="social-icon" icon="brand:tumblr" on-tap="_share"></paper-icon-button>
+            <paper-icon-button href$="http://www.tumblr.com/share/link?url=[[url]]" hidden$="[[!tumblr]]" style="color:#36465D" class="social-icon" icon="brand:tumblr" on-tap="_share"></paper-icon-button>
           </div>
           <div>
-            <a href="mailto:?body=[[url]]&subject=[[sharingText]]" target="_blank" tabindex="-1">
+            <a href$="mailto:?body=[[url]]&subject=[[sharingText]]" target="_blank" tabindex="-1">
               <paper-icon-button hidden$="[[!email]]" style="color:#000000" class="social-icon" icon="custom:email"></paper-icon-button>
             </a>
           </div>
