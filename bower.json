@@ -1,13 +1,13 @@
 {
   "name": "paper-share-button",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A Material Design sharing button (Polymer 1.x)",
   "authors": [
     "Zaccharie Jacquat"
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/MacTheZazou/paper-share-button.git"
+    "url": "git://github.com/koada-os/paper-share-button.git"
   },
   "main": "paper-share-button.html",
   "dependencies": {

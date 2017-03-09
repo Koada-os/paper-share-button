@@ -136,6 +136,10 @@ Custom property | Description | Default
                 url: {
                     type: String
                 },
+                /** Use window.location.href as url. (Only if the url is not set) */
+                autoUrl: {
+                    type: Boolean
+                },
                 /** The icon for the button (share icon by default)*/
                 buttonIcon: {
                     type: String,
@@ -197,25 +201,29 @@ Custom property | Description | Default
                     value: false
                 }
             },
+
             _share: function(event) {
               var element = Polymer.dom(event).localTarget;
+                if (!this.url && this.autoUrl) {
+                  this.url = window.location.href;
+                }
                 if (this.url) {
                     if (this.popup) {
                         switch (element.icon) {
                             case 'brand:facebook':
-                                this._openPopup(element.href, 'Sharing', 600, 375);
+                                this._openPopup(element.getAttribute('href'), 'Sharing', 600, 375);
                                 break;
                             case 'brand:google':
-                                this._openPopup(element.href, 'Sharing', 400, 445);
+                                this._openPopup(element.getAttribute('href'), 'Sharing', 400, 445);
                                 break;
                             case 'brand:twitter':
-                                this._openPopup(element.href, 'Sharing', 500, 230);
+                                this._openPopup(element.getAttribute('href'), 'Sharing', 500, 230);
                                 break;
                             default:
-                                window.open(element.href, 'Sharing');
+                                window.open(element.getAttribute('href'), 'Sharing');
                         }
                     } else {
-                        window.open(element.href, 'Sharing');
+                        window.open(element.getAttribute('href'), 'Sharing');
                     }
                 } else {
                     console.error("Impossible to share, no url set");
