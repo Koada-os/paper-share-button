@@ -91,7 +91,14 @@ Custom property | Description | Default
         width: var(--paper-share-button-brand-icon-width, 40px);
       }
     </style>
-    <paper-menu-button id="shareMenu">
+    <paper-menu-button id="shareMenu"
+        dynamic-align="[[dynamicAlign]]"
+        horizontal-align="[[horizontalAlign]]"
+        vertical-align="[[verticalAlign]]"
+        horizontal-offset="[[horizontalOffset]]"
+        vertical-offset="[[verticalOffset]]"
+        no-overlap="[[noOverlap]]"
+    >
       <paper-icon-button icon="[[buttonIcon]]" class="dropdown-trigger"></paper-icon-button>
       <paper-material class="dropdown-content">
         <div class="social-list">
@@ -199,7 +206,67 @@ Custom property | Description | Default
                 tumblr: {
                     type: Boolean,
                     value: false
-                }
+                },
+
+                /**
+                * The orientation against which to align the menu dropdown
+                * horizontally relative to the dropdown trigger.
+                */
+               horizontalAlign: {
+                 type: String,
+                 value: 'left',
+                 reflectToAttribute: true
+               },
+
+               /**
+                * The orientation against which to align the menu dropdown
+                * vertically relative to the dropdown trigger.
+                */
+               verticalAlign: {
+                 type: String,
+                 value: 'top',
+                 reflectToAttribute: true
+               },
+
+               /**
+                * If true, the `horizontalAlign` and `verticalAlign` properties will
+                * be considered preferences instead of strict requirements when
+                * positioning the dropdown and may be changed if doing so reduces
+                * the area of the dropdown falling outside of `fitInto`.
+                */
+               dynamicAlign: {
+                 type: Boolean
+               },
+
+               /**
+                * A pixel value that will be added to the position calculated for the
+                * given `horizontalAlign`. Use a negative value to offset to the
+                * left, or a positive value to offset to the right.
+                */
+               horizontalOffset: {
+                 type: Number,
+                 value: 0,
+                 notify: true
+               },
+
+               /**
+                * A pixel value that will be added to the position calculated for the
+                * given `verticalAlign`. Use a negative value to offset towards the
+                * top, or a positive value to offset towards the bottom.
+                */
+               verticalOffset: {
+                 type: Number,
+                 value: 0,
+                 notify: true
+               },
+
+               /**
+                * If true, the dropdown will be positioned so that it doesn't overlap
+                * the button.
+                */
+               noOverlap: {
+                 type: Boolean
+               },
             },
 
             _share: function(event) {
